@@ -22,7 +22,7 @@ class HomeController < ApplicationController
   	start_date = Date.strptime(params['start_date'], '%d/%m/%Y') rescue nil
   	end_date = Date.strptime(params['end_date'], '%d/%m/%Y') rescue nil
 
-  	if @hotel.present?  && start_date.present? && end_date.present?
+  	if @hotel.present?  && start_date.present? && end_date.present? && end_date > start_date
   		Booking.create(:hotel_id => @hotel.id, :user_id => @user.id, :start_date => start_date, :end_date => end_date )
   		render :json => {:message => 'Successfully created'}
   	else
