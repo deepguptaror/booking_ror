@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
   	search_query = params['query']
   	if search_query
-  		@hotels = Hotel.where("name like '%#{search_query}%' and location like '%#{search_query}%'" )
+  		@hotels = Hotel.where("name like '%#{search_query}%' OR location like '%#{search_query}%'" )
   	else
   		@hotels = Hotel.all
   	end
